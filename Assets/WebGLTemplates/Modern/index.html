@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>%UNITY_WEB_NAME%</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+    <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%", {
+            onProgress: UnityProgress,
+            Module: {
+                onRuntimeInitialized: function() {
+                    UnityProgress(gameInstance, "complete");
+                },
+            },
+            popup: function(message, callbacks) {
+                if (!callbacks || !callbacks.length) {
+                    return;
+                } else if (callbacks.length > 1) {
+                    return UnityLoader.Error.popup(this, message, callbacks);
+                } else if (callbacks[0].callback) {
+                    callbacks[0].callback();
+                }
+            },
+        });
+    </script>
+    <!--Google Adsence-->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1260508947508198",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script type="text/javascript">
+        var state = true;
+
+        function jsSkip() {
+            var old = document.getElementById('overlayad');
+            if (old) old.style.display = 'none';
+            state = false;
+        }
+
+        function jsRefresh() {
+			document.getElementById("gameContainer").focus();
+            var ovelay = document.getElementById('overlayad');
+            if (typeof ovelay !== 'undefined' && ovelay !== null) {
+                if (!state) {
+                    if (ovelay.style.display == 'block') {
+                        document.getElementById('ifads').contentDocument.location.reload(true);
+                        state = true;
+                    }
+                } else if (ovelay.style.display == 'none')
+					state = false;
+            } else state = false;
+        }
+
+        function jsFullScreen() {
+            document.getElementById('ifads').contentDocument.location.reload(true);
+        }
+
+        setInterval(function() {
+            jsRefresh();
+        }, 300);
+    </script>
+</head>
+
+<body>
+    <div class="webgl-content" style="width: 800px; height: 640px">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+        </script>
+        <ins class="adsbygoogle" style="float:left;display:inline-block;width:160px;height:600px;" data-ad-client="ca-pub-1260508947508198" data-ad-slot="2794476851"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+        </script>
+        <ins class="adsbygoogle" style="float:right;display:inline-block;width:160px;height:600px;" data-ad-client="ca-pub-1260508947508198" data-ad-slot="2794476851"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="webgl-content">
+		<div id="overlayad" style="display: none;position: absolute;top: 0px;left: 0px;background-color: rgba(0, 0, 0, 0.5);z-index: 1002;overflow: auto;width: 480px;height: 600px">
+			<div style="text-align:center;position: relative; top: 50%; transform: translateY(-50%);">
+				<div id="adsview">
+					<!-- ADS SOURCE -->
+					<div style = "margin:auto; width: 346px; height:310px;">
+						<!-- hien thi de quang cao that len day-->
+						<div style = "margin-top: 20px; background-image: url('TemplateData/backgroundAds.jpg'); background-repeat: no-repeat; width: 346px; height:290px;">
+							<iframe id="ifads" src="https://warfarechess.com/ourads" width="100%" height="100%" scrolling="no" style="border:0px; overflow: hidden;"></iframe>
+						</div>
+						<!--nut close quang cao-->
+						<div id="buttonClose" style="display: none; position: absolute; left: 50px; top: 0px; width:50px; height:50px; background-image: url('TemplateData/butCloseAds.png'); background-repeat: no-repeat;" onclick="jsSkip()"></div>
+					</div>
+				</div>
+				<div id="countTextContain" style = "margin:auto; color: white; text-align:center;background-color: rgba(0, 0, 0, 0.5); width: 346px; line-height: 30px;">
+					Automatic skip ad after <label style="color:red; font-weight: bold;" id="countText">10</label> seconds.
+				</div>
+			</div>
+		</div>
+		<div id="gameContainer" tabindex="1" style="width: 480px; height: 600px"></div>
+		<div class="footer">
+			<!--<div class="webgl-logo"></div>
+			<div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>-->
+			<div style="width: 480px;">
+				<font color=white size=2px><b>© 2018 SHOOTERBOY ENTERTAINMENT, ALL RIGHTS RESERVED</b></font>
+			</div>
+			<div class="title" style="color:white">%UNITY_WEB_NAME%</div>
+		</div>
+		<div id="overlay" class="overlay"></div>
+		<div class="counter">
+			<p id="loadingInfo">loading</p>
+			<h1 id="progressC">0%</h1>
+			<div id="ProgressLineB" class="ProgressLineB"> </div>
+			<div id="ProgressLine" class="ProgressLine"> </div>
+		</div>
+    </div>
+
+    <div id="loadingBox">
+        <div class="vertical-centered-box">
+            <div class="content">
+                <div class="loader-circle"></div>
+                <div class="loader-line-mask">
+                    <div class="loader-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
